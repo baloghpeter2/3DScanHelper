@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">3DScanHelper</string>
+    <string name="refresh">Refresh</string>
+    <string name="failed_connection">Could not connect to device</string>
+    <string name="start">Start taking pictures</string>
+    <string name="modeSelection">Select scanning mode</string>
+    <string name="automaticRB">Automatic</string>
+    <string name="manualRB">Manual</string>
+</resources>
