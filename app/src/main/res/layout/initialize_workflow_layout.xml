@@ -32,71 +32,69 @@
         android:visibility="gone">
         <!--set number of pictures / rev-->
         <TextView
-            android:textSize="20sp"
-            android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="0"
-            android:text="Select number of \npictures taken/revolution" />
-        <Spinner
-            android:textSize="20sp"
             android:layout_margin="10dp"
+            android:text="Select number of \npictures taken/revolution"
+            android:textSize="20sp" />
+
+        <Spinner
             android:id="@+id/imageCountSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
-            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
             android:minWidth="100dp"
-            android:layout_height="wrap_content"
-            />
+            android:textSize="20sp" />
         <!--select capturing mode-->
         <RadioGroup
             android:id="@+id/selectionRadioGroup"
-            android:layout_gravity="center"
-            android:layout_column="0"
-            android:layout_row="2"
-            android:layout_columnSpan="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorLight"
-            >
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center"
+            android:background="@color/colorLight">
 
             <TextView
-                android:textSize="20sp"
-                android:layout_margin="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/modeSelection"/>
+                android:layout_margin="10dp"
+                android:text="@string/modeSelection"
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/manualModeRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/manualRB"
-                android:textSize="20dp"
                 android:onClick="onScanningModeSelectionChanged"
-                />
+                android:text="@string/manualRB"
+                android:textSize="20sp" />
+
             <RadioButton
                 android:id="@+id/automaticModeRadioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/automaticRB"
-                android:textSize="20dp"
                 android:onClick="onScanningModeSelectionChanged"
-                />
+                android:text="@string/automaticRB"
+                android:textSize="20sp" />
         </RadioGroup>
         <!--start button-->
         <Button
-            android:textSize="20sp"
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:text="@string/start"
             android:id="@+id/startScanningButton"
-            android:layout_column="0"
+            android:layout_width="match_parent"
             android:layout_row="3"
+            android:layout_column="0"
             android:layout_columnSpan="2"
             android:layout_gravity="center"
-            />
+            android:layout_margin="10dp"
+            android:enabled="false"
+            android:text="@string/start"
+            android:textSize="20sp" />
     </GridLayout>
 </LinearLayout>

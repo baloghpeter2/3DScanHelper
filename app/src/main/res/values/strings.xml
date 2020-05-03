@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">3DScanHelper</string>
-    <string name="refresh">Refresh</string>
+    <string name="refresh">Refresh and disconnect from current</string>
+    <string name="disconnect">Disconnect</string>
     <string name="failed_connection">Could not connect to device</string>
     <string name="start">Start taking pictures</string>
     <string name="modeSelection">Select scanning mode</string>

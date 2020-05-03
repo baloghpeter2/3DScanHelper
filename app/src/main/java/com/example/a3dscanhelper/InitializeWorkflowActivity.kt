@@ -5,37 +5,30 @@ import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Context
 import android.content.Intent
-import android.graphics.Camera
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.initialize_workflow_layout.*
 import java.io.IOException
 import java.util.*
-import kotlin.properties.Delegates
 
 class InitializeWorkflowActivity : AppCompatActivity() {
 
     var selectedScanningMode: Int = -1
-    lateinit var connectedDevice:BluetoothDevice
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.initialize_workflow_layout)
-        val address = intent.getStringExtra(SelectDeviceActivity.EXTRA_ADDRESS)
-        startScanningButton.isEnabled = false
-        ConnectToDevice(this, address).execute()
-        populateSpinner(180);
-        startScanningButton.setOnClickListener { startTakingPictures() }
 
-//        control_led_on.setOnClickListener { sendCommand("a") }
-//        control_led_off.setOnClickListener { sendCommand("b") }
-//        control_led_disconnect.setOnClickListener { disconnect() }
+        val address = intent.getStringExtra(SelectDeviceActivity.EXTRA_ADDRESS)
+        ConnectToDevice().execute(address)
+        populateSpinner(180)
+
+        startScanningButton.setOnClickListener { startTakingPictures() }
     }
 
     private fun populateSpinner(size: Int) {
@@ -52,73 +45,44 @@ class InitializeWorkflowActivity : AppCompatActivity() {
                 R.id.manualModeRadioButton ->
                     if (checked) {
                         startScanningButton.isEnabled = true
-                        selectedScanningMode=1
+                        selectedScanningMode = 1
                     }
                 R.id.automaticModeRadioButton ->
                     if (checked) {
                         startScanningButton.isEnabled = true
-                        selectedScanningMode=2
+                        selectedScanningMode = 2
                     }
             }
         }
     }
 
     private fun startTakingPictures() {
-        val intent= Intent(this,CameraActivity::class.java)
-        if(connectedDevice!=null){
-            intent.putExtra("passedConnectedDevice",connectedDevice)
+        val intent = Intent(this, CameraActivity::class.java)
+        if (BluetoothService.getBluetoothService.getCurrentBluetoothConnection() != null) {
             startActivity(intent)
         }
     }
 
-
-    inner class ConnectToDevice(c: Context, address: String) : AsyncTask<Void, Void, String>() {
-
-        var m_myUUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
-        var m_bluetoothSocket: BluetoothSocket? = null
-        lateinit var m_bluetoothAdapter: BluetoothAdapter
-        var m_isConnected: Boolean = false
-        var m_address: String = address
-        private var connectSuccess: Boolean = true
-        private val context: Context
-
-        init {
-            this.context = c
-        }
+    inner class ConnectToDevice : AsyncTask<String, Void, String>() {
 
         override fun onPreExecute() {
             super.onPreExecute()
             loadingProgressBar.visibility = View.VISIBLE
         }
 
-        override fun doInBackground(vararg p0: Void?): String? {
-            try {
-                if (m_bluetoothSocket == null || !m_isConnected) {
-                    m_bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-                    val device: BluetoothDevice = m_bluetoothAdapter.getRemoteDevice(m_address)
-                    m_bluetoothSocket = device.createInsecureRfcommSocketToServiceRecord(m_myUUID)
-                    BluetoothAdapter.getDefaultAdapter().cancelDiscovery()
-                    m_bluetoothSocket!!.connect()
-                    connectedDevice=device
-                }
-            } catch (e: IOException) {
-                connectSuccess = false
-                Log.e("exception",e.message)
-            }
+        override fun doInBackground(vararg params: String?): String? {
+            BluetoothService.getBluetoothService.setUpBluetoothConnection(params[0].toString())
             return null
         }
 
         override fun onPostExecute(result: String?) {
-            super.onPostExecute(result)
             loadingProgressBar.visibility = View.GONE
-            if (connectSuccess) {
-                m_isConnected = true
+            if (BluetoothService.isConnected) {
                 //Show initial steps
-                Log.e("state","successful")
+                Log.e("state", "successful")
                 initialSetupGrid.visibility = View.VISIBLE
-            }
-            else {
-                Log.e("state","failed")
+            } else {
+                Log.e("state", "failed")
                 failedConnectionTextView.visibility = View.VISIBLE
             }
         }
