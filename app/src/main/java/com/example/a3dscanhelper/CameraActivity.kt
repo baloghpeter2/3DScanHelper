@@ -22,13 +22,7 @@ class CameraActivity : AppCompatActivity() {
     private fun sendToArduinoCommand(input: String) {
         //TODO check if BT connection exists
 //        Log.e("btService1", BluetoothService.bluetoothSocket.toString())
-//        Log.e("btService2", BluetoothService.isConnected.toString())
-//        Log.e("btService3", BluetoothService.currentAddress)
-//        Log.e("btService4", BluetoothService.bluetoothDevice.toString())
-//        Log.e("btService5", BluetoothService.bluetoothAdapter.toString())
-//        Log.e("btService6", BluetoothService.getBluetoothService.toString())
-//        Log.e("btService7", BluetoothService.bluetoothDevice.bondState.toString())
-//        Log.e("btService8", BluetoothService.bluetoothSocket?.isConnected.toString())
+
 
         if (BluetoothService.bluetoothSocket != null) {
             try {

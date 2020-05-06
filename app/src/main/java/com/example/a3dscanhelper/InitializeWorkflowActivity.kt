@@ -32,17 +32,14 @@ class InitializeWorkflowActivity : AppCompatActivity() {
     }
 
     private fun populateSpinner() {
-        val list= listOf<Int>()
+        val spinnerList= arrayListOf<Int>()
+        for (i in 90..360){
+            spinnerList.add(i)
+        }
 
-
-//        val spinnerArray = Array<Int>(180,null)
-//        for (item:String in spinnerArray){
-//
-//        }
-//        //{ i -> (i + 1).toString() }
-//        val arrayAdapter = ArrayAdapter(this, R.layout.spinner_item_layout, spinnerArray)
-//        arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-//        imageCountSpinner.adapter = arrayAdapter
+        val arrayAdapter = ArrayAdapter(this, R.layout.spinner_item_layout, spinnerList)
+        arrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+        imageCountSpinner.adapter = arrayAdapter
     }
 
     fun onScanningModeSelectionChanged(view: View) {
