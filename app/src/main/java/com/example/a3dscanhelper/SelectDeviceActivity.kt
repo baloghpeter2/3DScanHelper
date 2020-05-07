@@ -36,31 +36,6 @@ class SelectDeviceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.select_device_layout)
 
-        //Log.e("externalmediadir", getExternalFilesDir(null).toString())
-        val allExtDirs=getExternalFilesDirs(null)
-
-//        val storageManager = getSystemService(Context.STORAGE_SERVICE) as StorageManager
-//        //val storageVolumes = storageManager.storageVolumes
-//        Log.e("root",Environment.getRootDirectory().toString())
-//        //val whatisthis=applicationContext.filesDir.absolutePath
-//        Log.e("filesDirAbs",applicationContext.filesDir.absolutePath)
-//        //Context.getFilesDir()
-//        //val dcimDir=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
-//        Log.e("isEmulated",Environment.isExternalStorageEmulated().toString())
-//        Log.e("abspath",Environment.getExternalStorageDirectory().absolutePath)
-//        val dcimDir=Environment.getExternalStorageDirectory()
-//        val picsDir=File(dcimDir,"CustomPicsFolder")
-//        try {
-//            picsDir.mkdir();
-//            Log.e("folder",picsDir.toString())
-//        } catch (e: IOException) {
-//            e.printStackTrace()
-//        }
-//        val picFile=File(picsDir,"picName.png")
-////        Log.e("dcimDir", dcimDir.toString())
-////        Log.e("picsDir",picsDir.toString())
-////        Log.e("fullPicPath",picFile.toString())
-
         enableBluetooth()
         select_device_refresh.setOnClickListener { pairedDeviceList() }
     }
