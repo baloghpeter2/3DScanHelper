@@ -7,4 +7,7 @@
     <string name="modeSelection">Select scanning mode</string>
     <string name="automaticRB">Automatic</string>
     <string name="manualRB">Manual</string>
+    <string name="pause_capturing">Pause capturing</string>
+    <string name="step_back_and_delete_picture">Step back and delete picture</string>
+    <string name="capture_image">Capture image</string>
 </resources>

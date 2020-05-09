@@ -54,7 +54,7 @@ class CameraActivity : AppCompatActivity() {
         }
 
         //testButton.setOnClickListener { sendToArduinoCommand("testMessage") }
-        testButton.setOnClickListener { captureImage() }
+        captureImageButton.setOnClickListener { captureImage() }
         val handler = Handler()
         beginListenForData(handler)
     }
@@ -88,11 +88,11 @@ class CameraActivity : AppCompatActivity() {
             viewFinder.surfaceTexture = it.surfaceTexture
             updateTransform()
         }
-        findViewById<ImageButton>(R.id.testButton).setOnClickListener {
+        findViewById<ImageButton>(R.id.captureImageButton).setOnClickListener {
             captureImage();
         }
 
-        testButton.isEnabled = true
+        captureImageButton.isEnabled = true
         // Bind use cases to lifecycle
         // If Android Studio complains about "this" being not a LifecycleOwner
         // try rebuilding the project or updating the appcompat dependency to
@@ -250,10 +250,8 @@ class CameraActivity : AppCompatActivity() {
                                     )
                                     val data = String(encodedBytes).replace("\r", "")
                                     readBufferPosition = 0
-                                    handler.post(Runnable { testTextView.text = data })
                                     Log.e("data", data)
                                     handler.post({handleIncomingDataFromArduino(data)})
-                                    //handleIncomingDataFromArduino(data)
                                 } else if (readBuffer != null) {
                                     readBuffer[readBufferPosition++] = b
                                 }
