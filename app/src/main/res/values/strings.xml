@@ -10,4 +10,8 @@
     <string name="pause_capturing">Pause capturing</string>
     <string name="step_back_and_delete_picture">Step back and delete picture</string>
     <string name="capture_image">Capture image</string>
+    <string name="turn_flash_on">Turn flash on</string>
+    <string name="empty_picture_folder">Empty picture folder</string>
+    <string name="start_capturing">START CAPTURING</string>
+    <string name="continue_workflow">Continue workflow</string>
 </resources>

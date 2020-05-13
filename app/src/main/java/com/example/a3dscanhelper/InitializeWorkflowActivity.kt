@@ -18,7 +18,7 @@ import java.util.*
 
 class InitializeWorkflowActivity : AppCompatActivity() {
 
-    var selectedScanningMode: Int = -1
+    //var selectedScanningMode: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class InitializeWorkflowActivity : AppCompatActivity() {
 
     private fun populateSpinner() {
         val spinnerList= arrayListOf<Int>()
-        for (i in 90..360){
+        for (i in 5..360){
             spinnerList.add(i)
         }
 
@@ -42,7 +42,7 @@ class InitializeWorkflowActivity : AppCompatActivity() {
         imageCountSpinner.adapter = arrayAdapter
     }
 
-    fun onScanningModeSelectionChanged(view: View) {
+    /*fun onScanningModeSelectionChanged(view: View) {
         if (view is RadioButton) {
             val checked = view.isChecked
             when (view.getId()) {
@@ -58,10 +58,11 @@ class InitializeWorkflowActivity : AppCompatActivity() {
                     }
             }
         }
-    }
+    }*/
 
     private fun startTakingPictures() {
         val intent = Intent(this, CameraActivity::class.java)
+        intent.putExtra("numberOfPicturesPerRevolution",imageCountSpinner.selectedItem.toString())
         if (BluetoothService.getBluetoothService.getCurrentBluetoothConnection() != null) {
             startActivity(intent)
         }

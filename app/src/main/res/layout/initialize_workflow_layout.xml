@@ -29,7 +29,7 @@
         android:layout_gravity="center"
         android:columnCount="2"
         android:rowCount="4"
-        android:visibility="gone">
+        android:visibility="visible">
         <!--set number of pictures / rev-->
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             android:minWidth="100dp"
             android:textSize="20sp" />
         <!--select capturing mode-->
-        <RadioGroup
+        <!--<RadioGroup
             android:id="@+id/selectionRadioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                 android:onClick="onScanningModeSelectionChanged"
                 android:text="@string/automaticRB"
                 android:textSize="20sp" />
-        </RadioGroup>
+        </RadioGroup>-->
         <!--start button-->
         <Button
             android:id="@+id/startScanningButton"
@@ -93,8 +93,8 @@
             android:layout_columnSpan="2"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:enabled="false"
-            android:text="@string/start"
+            android:enabled="true"
+            android:text="@string/continue_workflow"
             android:textSize="20sp" />
     </GridLayout>
 </LinearLayout>
