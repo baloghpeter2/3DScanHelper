@@ -1,20 +1,15 @@
 package com.example.a3dscanhelper
 
-import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothSocket
-import android.content.Context
+
 import android.content.Intent
+import android.hardware.camera2.CameraCharacteristics
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.initialize_workflow_layout.*
-import java.io.IOException
-import java.util.*
 
 class InitializeWorkflowActivity : AppCompatActivity() {
 
@@ -26,8 +21,8 @@ class InitializeWorkflowActivity : AppCompatActivity() {
 
         val address = intent.getStringExtra(SelectDeviceActivity.EXTRA_ADDRESS)
         ConnectToDevice().execute(address)
-        populateSpinner()
 
+        populateSpinner()
         startScanningButton.setOnClickListener { startTakingPictures() }
     }
 

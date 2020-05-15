@@ -28,15 +28,31 @@
             app:backgroundTint="@android:color/white"
             android:contentDescription="@string/turn_flash_on"/>
 
-        <!--<ImageButton
-            android:id="@+id/emptyPictureFolderButton"
+        <GridLayout
+            android:id="@+id/picturesTakenLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_delete"
             android:layout_margin="32dp"
             android:layout_alignParentEnd="true"
-            app:backgroundTint="@android:color/white"
-            android:contentDescription="@string/empty_picture_folder"/>-->
+            android:columnCount="2"
+            android:rowCount="1"
+            >
+                <TextView
+                    android:id="@+id/numberOfPicturesTakenLabel"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="30sp"
+                    android:background="@color/colorWhite"
+                    />
+                <TextView
+                    android:id="@+id/supposedNumberOfPicturesLabel"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="30sp"
+                    android:background="@color/colorWhite"
+                    />
+
+        </GridLayout>
 
         <Button
             android:id="@+id/startWorkflowButton"
@@ -52,7 +68,6 @@
             app:srcCompat="@android:drawable/ic_menu_camera"
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
-            app:backgroundTint="@android:color/white"
             android:contentDescription="@string/capture_image"/>
 
         <ImageButton
@@ -63,7 +78,6 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
             android:layout_centerHorizontal="true"
-            app:backgroundTint="@android:color/white"
             android:contentDescription="@string/step_back_and_delete_picture"/>
 
         <ImageButton
@@ -74,6 +88,5 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_margin="10dp"
-            app:backgroundTint="@android:color/white"
             android:contentDescription="@string/pause_capturing"/>
 </RelativeLayout>
